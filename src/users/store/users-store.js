@@ -6,23 +6,28 @@ const state = {
     users: []
 }
 
-const loadNextPage =  async() => {
-
-    const users = await loadUsersbypage(state.currentPage + 1  )
-    if (users.length === 0) return;
-    state.currentPage +=1 ;
+const loadNextPage = async () => {
+    const users = await loadUsersbypage(state.currentPage + 1);
+    if (users.length === 0) {
+        state.currentPage -= 1; // Decrementar currentPage para evitar que siga incrementando
+        return;
+    }
+    state.currentPage += 1;
     state.users = users;
-}
+};
 
-const loadPreviousPage =  async() => {
-    
-}
+const loadPreviousPage = async () => {
+    if (state.currentPage <= 1) return; // Verificar si currentPage es mayor que 1 antes de decrementar
+    const users = await loadUsersbypage(state.currentPage - 1);
+    state.users = users;
+    state.currentPage -= 1;
+};
 
 const onUserChanged =  async() => {
     
-}
+} 
 
-const reloadPage =  async() => {
+const reloadPage =  async() => { 
     
 }
 

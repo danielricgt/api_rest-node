@@ -4,7 +4,7 @@ import { localhostUserToModel } from "../mappers/localhost-user.mapper";
 /**
  * 
  * @param {Number} page 
- * @returns {Promise<User[]>}
+ * @returns {Promise<User[]>} 
  */
 
 export const loadUsersbypage = async (page =1) => {

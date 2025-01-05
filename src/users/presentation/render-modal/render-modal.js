@@ -1,4 +1,5 @@
 import modalHtml from '../render-modal/render-modal.html?raw';
+import "../render-modal/render-modal.css"
 let modal;
 /**
  * 
@@ -9,7 +10,7 @@ export const renderModal = (element) => {
      
     modal = document.createElement('div');
     modal.innerHTML= modalHtml;
-    modal.className = 'modal-contaniner hide-modal';   
+    modal.className = 'modal-container hide-modal';   
 
     element.append(modal);
 

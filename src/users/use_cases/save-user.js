@@ -1,3 +1,4 @@
+import { userModelToLocalhost } from "../mappers/user-to-local-host.mapper";
 import { User } from "../models/user";
 
 /**
@@ -8,14 +9,18 @@ import { User } from "../models/user";
 
 export const saveUser = async( userLike ) => {
 
+
     const user = new User(userLike);
-    //TODO aqui falta un mapper
+    if (!user.firstName || !user.lastName ){
+     throw  "First and LastName required"
+    }
+    const userToSave = userModelToLocalhost(user); 
     if (user.id) {
         throw new Error('No se puede crear un usuario con un id existente');
         return;
     }
  
-    const updateUser = await createUser( user);
+    const updateUser = await createUser( userToSave);
     return updateUser;
 }
 

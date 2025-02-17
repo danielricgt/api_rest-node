@@ -18,7 +18,7 @@ export const saveUser = async( userLike ) => {
     if (user.id) {
         throw new Error('No se puede crear un usuario con un id existente');
         return;
-    }
+    }                   
  
     const updateUser = await createUser( userToSave);
     return updateUser;
